@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>時鐘</title>
+  <!-- Google Font for Digital Clock Only -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    #bg {
+      width: 100vw;  
+      height: 100vh;
+      background:url('sky.jpg') no-repeat;
+      background-size: cover;
+    }
+
+
+    /* 時鐘 */
+    #clock {
+        background: #89c0d4;
+        width: 300px;
+        height: 300px;
+        margin: auto;
+        border-radius: 50%;
+        border: 5px solid lightskyblue;
+        box-shadow: inset 0 0 10px 6px #181e3e;
+        z-index: 1;
+
+      position: relative;
+      top: calc(50% - 150px);
+    }
+
+    #clock::before {
+      content: "";
+      background-image: url("arisu.jpg");
+      background-size: cover;
+      background-position: 45%;
+      opacity: 0.5;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;  
+
+      position: absolute;
+      top: calc(50% - 150px);
+    }
+
+    #clock::after{
+      content: '';
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      opacity: 0.7;
+
+      position: absolute;
+      top: calc(50% - 150px);
+
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+
+    /* 呼吸燈特效 */
+    @keyframes glow {
+
+      0% {
+        box-shadow: 0 0 50px 10px #f51a0b;
+        opacity: 0.1;
+      }
+
+      50% {
+        box-shadow: 0 0 50px 10px #fffbc1;
+        opacity: 0.4;
+      }
+
+      100% {
+        box-shadow: 0 0 50px 10px #3dc7e9;
+        opacity: 0.7;
+      }
+
+    }
+
+
+    #hour {
+      width: 20%;
+      height: 5px;
+      background-color: #19668a;
+      border-radius: 100% 5px 5px 100%;
+      transform-origin: right center;
+      /* border: 1px solid #646464; */
+
+      position: absolute;
+      top: calc(50% - 5px);
+      left: 30%;
+    }
+
+    #minute {
+      width: 40%;
+      height: 5px;
+      background-color: cyan;
+      border-radius: 100% 5px 5px 100%;
+      transform-origin: right center;
+
+      position: absolute;
+      top: calc(50% - 5px);
+      left: 10%;
+    }
+
+    #second {
+      width: 45%;
+      height: 5px;
+      background-color: #7070f0;
+      border-radius: 100% 5px 5px 100%;
+      transform-origin: right center;
+
+      position: absolute;
+      top: calc(50% - 5px);
+      left: 5%;
+    }
+
+    /* 數字時鐘 */
+    #clock-text {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: bold;
+      font-size: 4.5rem;
+      text-align: center;
+      text-shadow: 5px 6px 4px rgba(55,225,255,0.4);
+      color: lightcyan;
+
+      position: relative;
+      top: 30%;
+    }
+
+    /* 流星雨特效 */
+    span{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 4px;
+      height: 4px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1), 0 0 0 8px rgba(255, 255, 255, 0.1), 0 0 20px rgba(255, 255, 255, 1)  ;
+      animation:  star 3s linear infinite;
+    }
+
+    span::before{
+      content: '';
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 300px;
+      height: 1px;
+      background: linear-gradient(90deg, #fff, transparent);
+    }
+
+    @keyframes star {
+
+      0%
+      {
+          transform: rotate(315deg) translateX(0);
+          opacity: 1;
+      }
+      70%
+      {
+          opacity: 1;
+      
+      }
+      100%
+      {
+          transform: rotate(315deg) translateX(-1500px);
+          opacity: 0;
+      }
+    
+    }
+    
+    span:nth-child(1){
+      top: 0;
+      right: 0;
+      left:initial;
+      animation-delay:0 ;
+      animation-duration: 1s;
+    }
+
+    span:nth-child(2){
+      top: 0;
+      right: 80px;
+      left:initial;
+      animation-delay:0.2s;
+      animation-duration: 3s;
+    }
+
+    span:nth-child(3){
+      top: 80px;
+      right: 0px;
+      left:initial;
+      animation-delay:0.4s ;
+      animation-duration: 2s;
+    }
+
+    span:nth-child(4){
+      top: 0;
+      right: 180px;
+      left:initial;
+      animation-delay:0.6s;
+      animation-duration: 1.5s;
+    }
+
+    span:nth-child(5){
+      top: 0;
+      right: 400px;
+      left:initial;
+      animation-delay:0.8s;
+      animation-duration: 2.5s;
+    }
+
+    span:nth-child(6){
+      top: 0;
+      right: 600px;
+      left:initial;
+      animation-delay:1s ;
+      animation-duration: 3s;
+    }
+
+    span:nth-child(7){
+      top: 300px;
+      right: 0px;
+      left:initial;
+      animation-delay:1s ;
+      animation-duration: 1.75s;
+    }
+
+    span:nth-child(8){
+      top: 0px;
+      right: 700px;
+      left:initial;
+      animation-delay:1.4s ;
+      animation-duration: 1.25s;
+    }
+
+    span:nth-child(9){
+      top: 0px;
+      right: 1000px;
+      left:initial;
+      animation-delay:0.75s ;
+      animation-duration: 2.25s;
+    }
+
+    span:nth-child(10){
+      top: 0px;
+      right: 1000px;
+      left:initial;
+      animation-delay:2.75s ;
+      animation-duration: 2.25s;
+    }
+
+    #audio-player {
+      opacity: 0;
+      transition: 0.3s;
+
+      position: absolute;
+      top: 10px;
+      left: 20px;
+    }
+
+    #audio-player:hover {
+      opacity: 1;
+    }
+
+  </style>
+</head>
+<body onload="startTime()">
+
+  <div id="bg">
+    <div id="clock">
+      <div id="hour"></div>
+      <div id="minute"></div>
+      <div id="second"></div>
+    </div>
+
+  <div id="clock-text"></div>
+
+    <div>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <audio id="audio-player" autoplay controls loop>
+    <source src="arisu_theme.mp3">
+  </audio>
+  <script>
+    const hour = document.getElementById('hour')
+    const minute = document.getElementById('minute')
+    const second = document.getElementById('second')
+
+    setInterval(() => {
+      const date = new Date()
+      hour.style.transform = `rotate(${date.getHours()*30 + 90 + date.getMinutes()*0.5}deg)`
+      minute.style.transform = `rotate(${date.getMinutes()*6 + 90}deg)`
+      second.style.transform = `rotate(${date.getSeconds()*6 + 90}deg)`
+    })
+    // clock()
+    setInterval(clock, 1000)
+
+
+    function startTime() {
+    const today = new Date()
+    let h = today.getHours()
+    let m = today.getMinutes()
+    let s = today.getSeconds()
+    m = checkTime(m)
+    s = checkTime(s)
+    document.getElementById('clock-text').innerHTML =  h + ":" + m + ":" + s
+    setTimeout(startTime, 1000)
+  }
+
+  function checkTime(i) {
+    if (i < 10) {i = "0" + i}
+    return i
+  }
+
+  const audio = document.getElementById("audio-player")
+  audio.addEventListener('loadeddata',()=>{
+    audio.volume = 0.55
+    // console.log(audio.volume);
+  })
+  </script>
+</body>
+</html>
